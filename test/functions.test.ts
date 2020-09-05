@@ -40,8 +40,9 @@ r.testPlan("functions.test.ts", () => {
       () => {
         const strTime = "17:00";
         const date = new Date(2019, 0, 10);
-        const actual = new Date("2019-01-10T17:00:00.000Z");
-        r.asserts.assertEquals(actual, util.validateTime(strTime, date));
+        date.setHours(17);
+        date.setMinutes(0);
+        r.asserts.assertEquals(date, util.validateTime(strTime, date));
       },
     );
     r.testCase(
@@ -79,6 +80,74 @@ r.testPlan("functions.test.ts", () => {
         r.asserts.assertThrows((): void => {
           util.validatePlate(plate14);
         }, Error);
+      },
+    );
+  });
+
+  r.testSuite("function hasAllowedServicePlate(string)", () => {
+    r.testCase(
+      "Given a plate number with string format of car Then returns car allowed to be on road according to service type",
+      () => {
+        const plate34 = "AAA-0002";
+        const plate33 = "UEM-045";
+        const plate24 = "CC-0003";
+        const plate23 = "OI-7698";
+        const plate242 = "AT-7698";
+
+        r.asserts.assertEquals(
+          plate34,
+          util.hasAllowedServicePlate(plate34)![0],
+        );
+        r.asserts.assertEquals(
+          plate33,
+          util.hasAllowedServicePlate(plate33)![0],
+        );
+        r.asserts.assertEquals(
+          plate24,
+          util.hasAllowedServicePlate(plate24)![0],
+        );
+        r.asserts.assertEquals(
+          plate23,
+          util.hasAllowedServicePlate(plate23)![0],
+        );
+        r.asserts.assertEquals(
+          plate242,
+          util.hasAllowedServicePlate(plate242)![0],
+        );
+      },
+    );
+
+    r.testCase(
+      "Given a plate number with string format of car Then returns car is not allowed to be on road according to service type",
+      () => {
+        const plate34 = "DMA-0002";
+        const plate33 = "PB-045";
+        const plate24 = "DI-0003";
+        const plate23 = "CCC-7698";
+        const plate232 = "IT-003";
+
+        const actual = null;
+
+        r.asserts.assertEquals(
+          actual,
+          util.hasAllowedServicePlate(plate34),
+        );
+        r.asserts.assertEquals(
+          actual,
+          util.hasAllowedServicePlate(plate33),
+        );
+        r.asserts.assertEquals(
+          actual,
+          util.hasAllowedServicePlate(plate24),
+        );
+        r.asserts.assertEquals(
+          actual,
+          util.hasAllowedServicePlate(plate23),
+        );
+        r.asserts.assertEquals(
+          actual,
+          util.hasAllowedServicePlate(plate232),
+        );
       },
     );
   });
