@@ -1,7 +1,7 @@
 # Pico & Placa predictor
-Pico y placa Literally 'Peak and Plate' (Spanish for peak [hour] and [license] plate") is a driving restriction policy aimed to mitigate traffic congestion [ [1] ].
+Pico y placa literally 'Peak and Plate' (Spanish for peak [hour] and [license] plate") is a driving restriction policy aimed to mitigate traffic congestion [ [1] ].
 
-The goal of this project is to "predict" if a vehicle can be on the road following the pico & placa rules applied in Quito, Ecuador's capital city.
+The goal of this project is to "predict" if a car can be on the road following the pico & placa rules applied in Quito, Ecuador's capital city.
 
 ## Program input and output
 The program have the following input and output:
@@ -16,7 +16,7 @@ The logic of the program is based on the following rules:
 
 * The circulation restriction will apply from Monday to Friday; in the morning, between <strong>7:00 am and 9:30 am</strong>; and, in the afternoon and evening, between <strong>16:00 pm and 19:30 pm</strong> according to the following calendar:
 
-  | Day of week        | Last digit of the license plate of the vehicle for which the restriction applies |     
+  | Day of week        | Last digit of the license plate of the car for which the restriction applies |     
   |--------------------|:---------------------------------------------------------------------------------|
   | Monday              |  1 y 2                                                                          |
   | Tuesday             |  3 y 4                                                                          |
@@ -25,27 +25,40 @@ The logic of the program is based on the following rules:
   | Friday              |  9 y 0                                                                          |
   | Saturday            |  None                                                                           |
   | Sunday              |  None                                                                           |
-  | Holidays            |  None                                                                           |
 
-  <strong>The following vehicles service type are exempted from the circulation restriction: </strong>
-* Government, Official and Decentralized autonomous government vehicles
-* Vehicles for Diplomatic, Consular and International Organizations or Technical Assistance use
-* Vehicles for Public and commercial service (Ex. Taxis, Buses)
+  <strong>The following cars service type are exempted from the circulation restriction: </strong>
+* Government, Official and Decentralized autonomous government cars (2nd letter of plate number: E, X, M, S)
+* Cars for Diplomatic, Consular and International Organizations or Technical Assistance use (2 letters only of plate number: CC, CD, OI, AT)
+* Cars for Public and commercial service (2nd letter of plate number: A, U, Z)
 
 
-<em><strong>Vehicle plate features</strong></em> [ [3] ] :
+<em><strong>Car plate features</strong></em> [ [3] ] :
 * They consist of three letters and three (old format) or four (new format) digits, starting from 000 to 9999, in formats of ABC-123 (old format) and ABC-1234 (new format). 
-* The first letter of the plate is defined by the province where the circulation permission of the vehicle was issued: Azuay (A), Bolívar (B), Cañar (U), Carchi (C), Cotopaxi (X), Chimborazo (H), El Oro (O), Esmeraldas (E), Francisco de Orellana (Q), Galápagos (W), Guayas (G), Imbabura (I), Loja (L), Los Ríos (R), Manabí (M), Morona (V), Napo (N), Pastaza (S), Pichincha (P), Santa Elena (Y), Santo Domingo de los Tsáchilas (J), Sucumbíos (K), Tungurahua (T), Zamora (Z)
-* The second letter identifies the type of vehicle service: Government vehicles (E), Official vehicles (X), Decentralized autonomous government vehicles (M or S), Public and commercial service vehicles (A or U or Z), Private vehicles (Any letter except the above).
-* Also, there are vehicles with specific plate structure 2 letters only: Consular corps (CC), Diplomatic corps (CD), International Organizations (OI), Technical Assistance (AT), International temporal vehicles (IT).
+* The first letter of the plate is defined by the province where the circulation permission of the car was issued: Azuay (A), Bolívar (B), Cañar (U), Carchi (C), Cotopaxi (X), Chimborazo (H), El Oro (O), Esmeraldas (E), Francisco de Orellana (Q), Galápagos (W), Guayas (G), Imbabura (I), Loja (L), Los Ríos (R), Manabí (M), Morona (V), Napo (N), Pastaza (S), Pichincha (P), Santa Elena (Y), Santo Domingo de los Tsáchilas (J), Sucumbíos (K), Tungurahua (T), Zamora (Z)
+* The second letter identifies the type of car service: Government cars (E), Official cars (X), Decentralized autonomous government cars (M or S), Public and commercial service cars (A or U or Z), Private cars (Any letter except the above).
+* Also, there are cars with specific plate structure 2 letters only: Consular corps (CC), Diplomatic corps (CD), International Organizations (OI), Technical Assistance (AT), International temporal cars (IT).
 
-PD: The Armed Forces of Ecuador vehicles plates are excluded
+PD: 
+- The Armed Forces of Ecuador cars plates and others are not considered
+- Holidays are not considered in the analysis
 
-[1]: https://en.wikipedia.org/wiki/Pico_y_placa
-[2]: http://www.amt.gob.ec/files/AMT-ORDM-305-CIRCULACION-VEHICULAR-PICO-Y-PLACA.pdf
-[3]: https://es.wikipedia.org/wiki/Matr%C3%ADculas_automovil%C3%ADsticas_de_Ecuador
+## Run the program
+To run the program:
+1. Install DENO (A secure runtime for JavaScript and TypeScript)
+   - Shell (Mac, Linux): curl -fsSL https://deno.land/x/install/install.sh | sh
+   - PowerShell (Windows): iwr https://deno.land/x/install/install.ps1 -useb | iex
+   - Homebrew (Mac): brew install deno 
+2. Download git repository: git clone https://github.com/eestevez/pico-placa-predictor.git
+3. Go to the repository folder and execute: <strong> deno run src/main.ts </strong>
+
+## Run the unit tests
+Execute the command: <strong> deno test --allow-env </strong>
 
 ### References
 [1]. Pico & Placa. https://en.wikipedia.org/wiki/Pico_y_placa (spanish)\
 [2]. Ordenanza Metropolitana de regulación de circulación vehicular pico y placa. http://www.amt.gob.ec/files/AMT-ORDM-305-CIRCULACION-VEHICULAR-PICO-Y-PLACA.pdf , pag. 4-5, (spanish)\
 [3]. Matrículas automovilísticas de Ecuador. https://es.wikipedia.org/wiki/Matr%C3%ADculas_automovil%C3%ADsticas_de_Ecuador (spanish)
+
+[1]: https://en.wikipedia.org/wiki/Pico_y_placa
+[2]: http://www.amt.gob.ec/files/AMT-ORDM-305-CIRCULACION-VEHICULAR-PICO-Y-PLACA.pdf
+[3]: https://es.wikipedia.org/wiki/Matr%C3%ADculas_automovil%C3%ADsticas_de_Ecuador
