@@ -27,9 +27,9 @@ The logic of the program is based on the following rules:
   | Sunday              |  None                                                                           |
 
   <strong>The following cars service type are exempted from the circulation restriction: </strong>
-* Government, Official and Decentralized autonomous government cars
-* Cars for Diplomatic, Consular and International Organizations or Technical Assistance use
-* Cars for Public and commercial service (Ex. Taxis, Buses)
+* Government, Official and Decentralized autonomous government cars (2nd letter of plate number: E, X, M, S)
+* Cars for Diplomatic, Consular and International Organizations or Technical Assistance use (2 letters only of plate number: CC, CD, OI, AT)
+* Cars for Public and commercial service (2nd letter of plate number: A, U, Z)
 
 
 <em><strong>Car plate features</strong></em> [ [3] ] :
